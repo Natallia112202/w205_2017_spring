@@ -1,0 +1,65 @@
+There could be two approaches to find the best hospitals:
+1. using the overall score for hospitals derived from file "Timely and
+effective care"
+The quiry counts the highest possible score of "Very High
+(60,000 + patients annually")  along the range
+of conditions/measures.
+select * from quality_care limit 10;
+OH	GOOD SAMARITAN HOSPITAL	Very High (60,000+ patients annually)	2
+NJ	JFK MEDICAL CTR - ANTHONY M. YELENCSICS COMMUNITY	Very High
+(60,000+ patients annually)	1
+OH	SPRINGFIELD REGIONAL MEDICAL CENTER	Very High (60,000+ patients
+annually)	1
+TX	TEXAS HEALTH ARLINGTON MEMORIAL HOSPITAL	Very High (60,000+
+patients annually)	1
+VA	UNIVERSITY OF VIRGINIA MEDICAL CENTER	Very High (60,000+ patients
+annually)	1
+CA	SOUTHWEST HEALTHCARE SYSTEM	Very High (60,000+ patients annually)
+1
+FL	PALMETTO GENERAL HOSPITAL	Very High (60,000+ patients annually)
+1
+IA	GENESIS MEDICAL CENTER-DAVENPORT	Very High (60,000+ patients
+annually)	1
+OK	ST ANTHONY HOSPITAL	Very High (60,000+ patients annually)	1
+FL	WINTER HAVEN HOSPITAL	Very High (60,000+ patients annually)	1
+
+
+2. using national comparison criteria from the file ("Hospital General
+Information"). I choose mortality, safety of care, patient experience,
+effectiveness of care, timeliness of care - national comparison parameters.
+
+top ten hospitals selected: those are hospitals getting" Above the National
+Average" score for all or most of the 5 parameters listed above.
+query executed by running 
+select * from quality_care_national_comp limit 10; 
+150162	FRANCISCAN HEALTH INDIANAPOLIS	IN	Above the National average
+Above the National average	Above the National average	Above the
+National average	Above the National average
+030103	MAYO CLINIC HOSPITAL	AZ	Above the National average	Above
+the National average	Above the National average	Above the National
+average	Same as the National average
+050424	SCRIPPS GREEN HOSPITAL	CA	Above the National average	Above
+the National average	Above the National average	Above the National
+average	Same as the National average
+100087	SARASOTA MEMORIAL HOSPITAL	FL	Above the National average
+Above the National average	Above the National average	Above the
+National average	Same as the National average
+140030	SHERMAN HOSPITAL	IL	Above the National average	Above
+the National average	Above the National average	Above the National
+average	Same as the National average
+140116	CENTEGRA HEALTH SYSTEM - MC HENRY HOSPITAL	IL	Above the
+National average	Above the National average	Above the National
+average	Above the National average	Same as the National average
+140122	ADVENTIST HINSDALE HOSPITAL	IL	Above the National average
+Above the National average	Above the National average	Above the
+National average	Same as the National average
+140186	RIVERSIDE MEDICAL CENTER	IL	Above the National average
+Above the National average	Above the National average	Above the
+National average	Same as the National average
+150158	IU HEALTH WEST HOSPITAL	IN	Above the National average	Above
+the National average	Above the National average	Above the National
+average	Same as the National average
+170186	KANSAS HEART HOSPITAL	KS	Above the National average	Above
+the National average	Above the National average	Above the National
+average	Same as the National average
+

@@ -1,0 +1,38 @@
+The "Redmission and Deaths- Hospitals" score parameter used to evaluate the
+variability in the measures (30 days readmission rates, 30 days mortality
+rates,death rates for selected health conditions)  among the hospitals.
+The question is answered by using the query:
+select measure_name, cast(STDDEV(rating) as decimal(5,2)) std_rating,
+cast(avg(rating) as decimal(5,2)) ave_rating from proced_var group by
+measure_name order by (std_rating*100/ave_rating) DESC;
+
+
+RESULT:
+Death rate for CABG                       0.87              3.33 
+Death rate for chronic obstructive 
+pulmonary disease (COPD) patients	  1.11               8.08
+Pneumonia (PN) 30-Day Mortality Rate	  2.1	             16.4
+Heart failure (HF) 30-Day 
+Mortality Rate	                          1.46	             12.16
+Rate of readmission after hip/knee 
+replacement	                          0.55	             4.61
+Death rate for stroke patients	          1.66	             14.93
+Acute Myocardial Infarction (AMI) 
+30-Day Mortality Rate	                  1.25	             14.06
+Rate of readmission for stroke patients	  1.07	             12.56
+Pneumonia (PN) 30-Day Readmission Rate	  1.43	             17.11
+Rate of readmission for CABG	          1.13	             14.41
+Heart failure (HF) 30-Day Readmission 
+Rate	                                  1.5	             21.95
+Rate of readmission for chronic 
+obstructive pulmonary disease 
+(COPD) patients                           1.27	             20
+Acute Myocardial Infarction (AMI) 
+30-Day Readmission Rate	                  0.96	             16.89
+Rate of readmission after discharge 
+from hospital (hospital-wide)	          0.82               15.58
+
+Results above are for (1) standard deviation and (2) average scores.
+The measures are listed in the %CV(coefficient of variability) order ranging
+from max of 18% for Death rate for CABG and min of ~5% for Rate of readmission
+after discharge from hospital (hospital-wide), also see Q3_measures_variability.png file,  

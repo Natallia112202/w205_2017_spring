@@ -1,0 +1,95 @@
+I used parameters 
+-patient_experience_national_comp (reflects the patients' rating of
+hospital) and 
+-hospital_overall_rating (reflects overal rating of the hospital)
+from "Hospital General Information".
+The query:
+select * from ove_rating_patient_surv limit 50;
+
+attempts to find out if there is a correlation between independent hospital
+overal rating and the survey responses obtained from patients:
+MARION REGIONAL MEDICAL CENTER	Above the National average	5
+LAKELAND COMMUNITY HOSPITAL	Same as the National average	5
+BAPTIST MEDICAL CENTER EAST	Above the National average	5
+MAYO CLINIC HOSPITAL	Above the National average	5
+BANNER HEART HOSPITAL	Above the National average	5
+ARKANSAS SURGICAL HOSPITAL	Above the National average	5
+COMMUNITY HOSPITAL OF THE MONTEREY PENINSULA	Above the National average
+5
+METHODIST HOSPITAL OF SOUTHERN CA	Same as the National average	5
+SCRIPPS MEMORIAL HOSPITAL LA JOLLA	Above the National average	5
+GOLETA VALLEY COTTAGE HOSPITAL	Above the National average	5
+SANTA BARBARA COTTAGE HOSPITAL	Above the National average	5
+SCRIPPS GREEN HOSPITAL	Above the National average	5
+MERCY REGIONAL MEDICAL CENTER	Above the National average	5
+SARASOTA MEMORIAL HOSPITAL	Above the National average	5
+GORDON HOSPITAL	Above the National average	5
+NORTHSIDE MEDICAL CENTER	Above the National average	5
+STRAUB CLINIC AND HOSPITAL	Above the National average	5
+ST LUKE'S REGIONAL MEDICAL CENTER	Above the National average	5
+ADVENTIST LA GRANGE MEMORIAL HOSPITAL	Above the National average	5
+CENTEGRA HEALTH SYSTEM - MC HENRY HOSPITAL	Above the National average
+5
+RIVERSIDE MEDICAL CENTER	Above the National average	5
+ADVOCATE CONDELL MEDICAL CENTER	Same as the National average	5
+ADVOCATE GOOD SHEPHERD HOSPITAL	Same as the National average	5
+ST CATHERINE HOSPITAL INC	Same as the National average	5
+FRANCISCAN HEALTH MOORESVILLE	Above the National average	5
+ 
+It looks like the two parameters do correlate.
+
+It might be better if both parameters are ordinal (so one  would convert the
+nominal values of patient_experience_national_comp (Above the National Average,Same as the National Average,Below the National Average) into ordinal values 1,2,3)
+
+select * from ove_rating_patient_surv_num limit 10;
+CANYON VISTA MEDICAL CENTER	1	1
+BANNER-UNIVERSITY MEDICAL CENTER TUCSON CAMPUS	1	1
+MOUNTAIN VISTA MEDICAL CENTER, LP	1	1
+UAMS MEDICAL CENTER	1	1
+ST BERNARDS MEDICAL CENTER	2	1
+ST ROSE HOSPITAL	1	1
+ANTELOPE VALLEY HOSPITAL	1	1
+RIDEOUT MEMORIAL HOSPITAL	1	1
+SAN FRANCISCO GENERAL HOSPITAL	1	1
+KERN MEDICAL CENTER	1	1
+Time taken: 0.088 seconds, Fetched 10 row(s)
+spark-sql> select * from ove_rating_patient_surv_num limit 200;
+CANYON VISTA MEDICAL CENTER	1	1
+BANNER-UNIVERSITY MEDICAL CENTER TUCSON CAMPUS	1	1
+MOUNTAIN VISTA MEDICAL CENTER, LP	1	1
+UAMS MEDICAL CENTER	1	1
+ST BERNARDS MEDICAL CENTER	2	1
+ST ROSE HOSPITAL	1	1
+ANTELOPE VALLEY HOSPITAL	1	1
+RIDEOUT MEMORIAL HOSPITAL	1	1
+SAN FRANCISCO GENERAL HOSPITAL	1	1
+KERN MEDICAL CENTER	1	1
+HIGHLAND HOSPITAL	1	1
+TULARE REGIONAL MEDICAL CENTER	1	1
+HEMET VALLEY MEDICAL CENTER	1	1
+ORANGE COUNTY GLOBAL MEDICAL CENTER	1	1
+GEORGE WASHINGTON UNIV HOSPITAL	1	1
+HOWARD UNIVERSITY HOSPITAL	1	1
+MEDSTAR GEORGETOWN UNIVERSITY HOSPITAL	1	1
+PROVIDENCE HOSPITAL	1	1
+UNITED MEDICAL CENTER	1	1
+UF HEALTH JACKSONVILLE	1	1
+UNIVERSITY OF MIAMI HOSPITAL	1	1
+JACKSON MEMORIAL HOSPITAL	1	1
+NORTH SHORE MEDICAL CENTER	1	1
+LOWER KEYS MEDICAL CENTER	1	1
+SOUTH BAY HOSPITAL	1	1
+ST MARY'S MEDICAL CENTER	1	1
+PHOEBE PUTNEY MEMORIAL HOSPITAL	1	1
+AU MEDICAL CENTER	1	1
+GRADY MEMORIAL HOSPITAL	1	1
+WELLSTAR ATLANTA MEDICAL CENTER	1	1
+HOLY CROSS HOSPITAL	1	1
+UNIVERSITY OF ILLINOIS HOSPITAL	1	1
+FRANCISCAN ST JAMES HEALTH	1	1
+JACKSON PARK HOSPITAL	1	1
+KENTUCKIANA MEDICAL CENTER LLC	2	1
+UNIVERSITY OF LOUISVILLE HOSPITAL	1	1
+
+Transferring the result of the query into Excel or R I calculated the
+R^2=0.37 see also file Q4_hosp_and_patients_corr.png

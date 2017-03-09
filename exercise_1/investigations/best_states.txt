@@ -1,0 +1,20 @@
+Hospital Overall rating parameter from "Hospital General Information" was used
+in this query. Hospitals grouped by states, the average per state
+Hospital_overall_rating parameter calculated and the states are sorted on this
+parameter in descending order. 
+Query done using a  command: 
+select state,cast(avg(hospital_overall_rating) as decimal(5,2)) ave_h from
+hosp_states group by state order by ave_h DESC;
+
+Result:
+STATE   ave.overall_rating per state
+SD      3.86 
+DE	3.67
+WI	3.61
+ID	3.53
+MN	3.53
+NH	3.48
+IN	3.48
+UT	3.45
+CO	3.45
+ME	3.4
